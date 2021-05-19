@@ -1,0 +1,8 @@
+{{ form_start(form) }}
+    <div class="form-group">
+        <label for="libelle">Libelle</label>
+         {{ form_widget(form.libelle) }}
+    </div>
+
+    <button class="btn btn-success">{{ button_label|default('Enregistre') }}</button>
+{{ form_end(form) }}

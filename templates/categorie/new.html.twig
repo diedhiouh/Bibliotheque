@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Domaine{% endblock %}
+
+{% block body %}
+    <h1 class="jumbotron">Ajouter une nouvelle categorie</h1>
+
+    {{ include('categorie/_form.html.twig') }}
+
+    <a href="{{ path('categorie_index') }}">Liste des categories</a>
+{% endblock %}

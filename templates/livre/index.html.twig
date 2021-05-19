@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livre index{% endblock %}
+
+{% block body %}
+    <h1 class="jumbotron">Liste des livres</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Langue</th>
+                <th>ISBN</th>
+                <th>Annee</th>
+                <th>Nbr_pages</th>
+                <th>Date_parution</th>
+                <th>Image_livre</th>
+                <th>Nbr_exemplaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livre in livres %}
+            <tr>
+                <td>{{ livre.id }}</td>
+                <td>{{ livre.titre }}</td>
+                <td>{{ livre.langue }}</td>
+                <td>{{ livre.ISBN }}</td>
+                <td>{{ livre.annee }}</td>
+                <td>{{ livre.nbrPages }}</td>
+                <td>{{ livre.dateParution ? livre.dateParution|date('Y-m-d') : '' }}</td>
+                <td>{{ livre.imageLivre }}</td>
+                <td>{{ livre.nbrExemplaire }}</td>
+                <td>
+                    <a href="{{ path('livre_show', {'id': livre.id}) }}">Afficher</a>
+                    <a href="{{ path('livre_edit', {'id': livre.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">Aucun element trouve</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('livre_new') }}">Ajouter un nouveau livre</a>
+{% endblock %}

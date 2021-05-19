@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Auteur index{% endblock %}
+
+{% block body %}
+    <h1 class="jumbotron">Liste des auteurs</h1>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Nationalite</th>
+                <th>Date_naissance</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for auteur in auteurs %}
+            <tr>
+                <td>{{ auteur.id }}</td>
+                <td>{{ auteur.prenom }}</td>
+                <td>{{ auteur.nom }}</td>
+                <td>{{ auteur.nationalite }}</td>
+                <td>{{ auteur.dateNaissance ? auteur.dateNaissance|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('auteur_show', {'id': auteur.id}) }}">Afficher</a>
+                    <a href="{{ path('auteur_edit', {'id': auteur.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun element trouve</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('auteur_new') }}">Ajouter un auteur</a>
+{% endblock %}
